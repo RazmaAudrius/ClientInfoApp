@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">       
+        <a class="navbar-brand" href="#">Klientai</a>
+             
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">   
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       routerLink="/list"
+                       routerLinkActive="active"
+                       aria-current="page">
+                        Klientų sąrašas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       routerLink="/add-client"
+                       routerLinkActive="active">
+                        Naujas klientas
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex">
+                <button class="btn btn-outline-light btn-sm d-none d-lg-inline"
+                        (click)="LogOut()">
+                    Atsijungti
+                </button>
+                <button class="btn btn-danger d-lg-none" (click)="LogOut()" aria-label="Log out">
+                    <i class="bi bi-box-arrow-right fs-3"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

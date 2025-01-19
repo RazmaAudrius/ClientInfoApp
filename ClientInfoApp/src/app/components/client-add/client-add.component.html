@@ -1,0 +1,122 @@
+<div class="card mt-5">
+    <div class="card-header">Pridėti naują klientą</div>
+    <div class="card-body">
+        <app-loading *ngIf="isLoading"></app-loading>
+        <div class="alert alert-danger" *ngIf="isError">
+            Įvyko klaida
+        </div>
+        <form (ngSubmit)="addNewClient(f)" #f="ngForm">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Vardas</label>
+                <input type="text"
+                       name="firstName"
+                       id="firstName"
+                       class="form-control"
+                       [class.is-invalid]="!inputfirstName.valid && inputfirstName.touched"
+                       [(ngModel)]="firstName"
+                       required
+                       minlength="2"
+                       maxlength="128"
+                       #inputfirstName="ngModel">
+                <div *ngIf="inputfirstName.invalid && inputfirstName.touched" class="invalid-feedback">
+                    Vardas turi būti ne trumpesnis nei 2 simboliai.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Pavardė</label>
+                <input type="text"
+                       name="lastName"
+                       id="lastName"
+                       class="form-control"
+                       [class.is-invalid]="!inputlastName.valid && inputlastName.touched"
+                       [(ngModel)]="lastName"
+                       required
+                       minlength="2"
+                       maxlength="128"
+                       #inputlastName="ngModel">
+                <div *ngIf="inputlastName.invalid && inputlastName.touched" class="invalid-feedback">
+                    Pavardė turi būti ne trumpesnė nei 2 simboliai.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Tel. numeris</label>
+                <input type="text"
+                       name="phone"
+                       id="phone"
+                       class="form-control"
+                       [class.is-invalid]="!inputphone.valid && inputphone.touched"
+                       [(ngModel)]="phone"
+                       required
+                       minlength="7"
+                       maxlength="15"
+                       pattern="^[\+][0-9]{11}$" 
+                #inputphone="ngModel">
+                <div *ngIf="inputphone.invalid && inputphone.touched" class="invalid-feedback">
+                    Neteisingas telefono numeris. Pavyzdys: +37061234567.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Elektroninis paštas</label>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       class="form-control"
+                       [class.is-invalid]="!inputemail.valid && inputemail.touched"
+                       [(ngModel)]="email"
+                       required
+                       maxlength="128"
+                       pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                       #inputemail="ngModel">
+                <div *ngIf="inputemail.invalid && inputemail.touched" class="invalid-feedback">
+                    Neteisingas elektroninio pašto adresas.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Komentaras</label>
+                <textarea name="comment"
+                          id="comment"
+                          class="form-control"
+                          [class.is-invalid]="!inputcomment.valid && inputcomment.touched"
+                          [(ngModel)]="comment"
+                          required
+                          minlength="2"
+                          maxlength="512"
+                          #inputcomment="ngModel"></textarea>
+                <div *ngIf="inputcomment.invalid && inputcomment.touched" class="invalid-feedback">
+                    Komentaras turi būti bent 2 simbolių ilgio.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="companyName" class="form-label">Įmonės pavadinimas</label>
+                <input type="text"
+                       name="companyName"
+                       id="companyName"
+                       class="form-control"
+                       [class.is-invalid]="!inputcompanyName.valid && inputcompanyName.touched"
+                       [(ngModel)]="companyName"                       
+                       minlength="0"
+                       maxlength="128"
+                       #inputcompanyName="ngModel">
+                <div *ngIf="inputcompanyName.invalid && inputcompanyName.touched" class="invalid-feedback">
+                    Įmonės pavadinimas turi būti bent 2 simbolių ilgio.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="companyAddress" class="form-label">Įmonės adresas</label>
+                <input type="text"
+                       name="companyAddress"
+                       id="companyAddress"
+                       class="form-control"
+                       [class.is-invalid]="!inputcompanyAddress.valid && inputcompanyAddress.touched"
+                       [(ngModel)]="companyAddress"                       
+                       minlength="0"
+                       maxlength="128"
+                       #inputcompanyAddress="ngModel">
+                <div *ngIf="inputcompanyAddress.invalid && inputcompanyAddress.touched" class="invalid-feedback">
+                    Įmonės adresas turi būti bent 2 simbolių ilgio.
+                </div>
+            </div>
+            <button class="btn btn-success" [disabled]="!f.valid">Pridėti</button>
+        </form>
+    </div>
+</div>
